@@ -1,9 +1,8 @@
 import { ApolloServer, gql } from 'apollo-server'
-import { typeDefs, resolvers } from './schema.js'
+import schema from './schema.js'
 
 const server = new ApolloServer({
-    typeDefs,
-    resolvers
+    schema
 })
 
 server.listen().then(() => console.log("4000"))
