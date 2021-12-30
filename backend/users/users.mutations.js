@@ -32,8 +32,20 @@ export default {
         // password hash 处理
         // 保存并返回用户
       } catch (e) {
-        return e
+        return
       }
     },
+    login: async (_, {
+      userName,
+      password
+    }) => {
+      const user = await client.user.findFirst({where:{userName}})
+      if(!user){
+        return {
+          ok:false,
+          error:"User not found."
+        }
+      }
+    }
   }
 }
