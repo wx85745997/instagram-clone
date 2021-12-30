@@ -1,8 +1,12 @@
+import dotenv from 'dotenv'
+dotenv.config()
 import { ApolloServer, gql } from 'apollo-server'
-import schema from './schema.js'
+import schema from './schema'
+
 
 const server = new ApolloServer({
     schema
 })
+const PORT = process.env.PORT;
 
-server.listen().then(() => console.log("4000"))
+server.listen(PORT).then(() => console.log(`server in running on http://location:${PORT}`))
