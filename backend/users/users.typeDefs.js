@@ -8,6 +8,8 @@ export default gql`
         email:String!
         createdAt:String!
         updateAt:String!
+        bio:String
+        avatar:String
     }
     type Query{
         seeProfile(userName:String!):User

@@ -10,7 +10,9 @@ export default gql`
             lastName:String
             userName:String
             email:String
-            password:String
+            password:String,
+            bio:String,
+            avatar:Upload
         ):EditProfileResult
     }
 `
