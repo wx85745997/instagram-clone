@@ -20,5 +20,5 @@ model User {
   createdAt DateTime @default(now())
   updateAt  DateTime @updatedAt
   bio       String?
-  avator    String?
+  avatar    String?
 }
