@@ -1,7 +1,7 @@
-import client from "../../client";
-export default {
+import { Resolvers } from "../types";
+const resolvers: Resolvers = {
   Query: {
-    searchUsers: async (_, { keyword }) =>
+    searchUsers: async (_, { keyword }, { client }) =>
       client.user.findMany({
         where: {
           username: {

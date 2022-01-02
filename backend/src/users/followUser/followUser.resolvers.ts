@@ -1,15 +1,14 @@
-import client from "../../client";
 import { protectedResolver } from "../users.utils";
-
-export default {
+import { Resolvers } from "../types";
+const resolvers: Resolvers = {
   Mutation: {
-    unFollowUser: protectedResolver(
-      async (_, { username }, { loggedInUser }) => {
+    followUser: protectedResolver(
+      async (_, { username }, { loggedInUser, client }) => {
         const user = await client.user.findUnique({ where: { username } });
         if (!user) {
           return {
             ok: false,
-            error: "Cant unfollow user",
+            error: "That user does not exist.",
           };
         }
         await client.user.update({
@@ -18,7 +17,7 @@ export default {
           },
           data: {
             following: {
-              disconnect: {
+              connect: {
                 username,
               },
             },
@@ -31,3 +30,4 @@ export default {
     ),
   },
 };
+export default resolvers;

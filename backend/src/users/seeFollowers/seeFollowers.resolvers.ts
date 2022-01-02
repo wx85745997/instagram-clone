@@ -1,7 +1,7 @@
-import client from "../../client";
-export default {
+import { Resolvers } from "../types";
+const resolvers: Resolvers = {
   Query: {
-    seeFollowers: async (_, { username, take = 5, page }) => {
+    seeFollowers: async (_, { username, take = 5, page }, { client }) => {
       const user = await client.user.findUnique({
         where: {
           username,
@@ -38,3 +38,5 @@ export default {
     },
   },
 };
+
+export default resolvers;

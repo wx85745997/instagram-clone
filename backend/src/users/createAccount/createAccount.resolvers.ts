@@ -1,10 +1,11 @@
-import client from "../../client";
-import bcrypt from "bcrypt";
-export default {
+import * as bcrypt from "bcrypt";
+import { Resolvers } from "../types";
+const resolvers: Resolvers = {
   Mutation: {
     createAccount: async (
       _,
-      { firstName, lastName, username, email, password }
+      { firstName, lastName, username, email, password },
+      { client }
     ) => {
       try {
         // 检查 用户名和email是否已经存在DB里
@@ -41,3 +42,5 @@ export default {
     },
   },
 };
+
+export default resolvers;

@@ -1,9 +1,9 @@
-import client from "../../client";
-import bcrypt from "bcrypt";
-import Jwt from "jsonwebtoken";
+import * as bcrypt from "bcrypt";
+import * as Jwt from "jsonwebtoken";
 import { protectedResolver } from "../users.utils";
 import { createWriteStream } from "fs";
-export default {
+import { Resolvers } from "../types";
+const resolvers: Resolvers = {
   Mutation: {
     editProfile: protectedResolver(
       async (
@@ -17,7 +17,7 @@ export default {
           bio,
           avatar,
         },
-        { loggedInUser }
+        { loggedInUser, client }
       ) => {
         let avatarUrl = null;
         if (avatar) {
@@ -63,3 +63,5 @@ export default {
     ),
   },
 };
+
+export default resolvers;
