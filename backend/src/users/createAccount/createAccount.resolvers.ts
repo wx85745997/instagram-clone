@@ -1,5 +1,5 @@
 import * as bcrypt from "bcrypt";
-import { Resolvers } from "../types";
+import { Resolvers } from "../../types";
 const resolvers: Resolvers = {
   Mutation: {
     createAccount: async (

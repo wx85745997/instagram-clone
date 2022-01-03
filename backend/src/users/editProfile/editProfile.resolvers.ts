@@ -2,7 +2,7 @@ import * as bcrypt from "bcrypt";
 import * as Jwt from "jsonwebtoken";
 import { protectedResolver } from "../users.utils";
 import { createWriteStream } from "fs";
-import { Resolvers } from "../types";
+import { Resolvers } from "../../types";
 const resolvers: Resolvers = {
   Mutation: {
     editProfile: protectedResolver(

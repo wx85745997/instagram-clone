@@ -1,6 +1,6 @@
 import * as bcrypt from "bcrypt";
 import * as jwt from "jsonwebtoken";
-import { Resolvers } from "../types";
+import { Resolvers } from "../../types";
 const resolvers: Resolvers = {
   Mutation: {
     login: async (_, { username, password }, { client }) => {

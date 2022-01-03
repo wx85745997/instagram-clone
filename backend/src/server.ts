@@ -8,7 +8,7 @@ import { getUser } from "./users/users.utils";
 import * as logger from "morgan";
 import client from "./client";
 
-const PORT: string | number = process.env.PORT || 4000;
+var PORT: number = +process.env.PORT || 4000;
 
 const startServer = async () => {
   const server = new ApolloServer({
@@ -23,7 +23,11 @@ const startServer = async () => {
   });
   await server.start();
   const app = express();
-  app.use(logger("tiny"));
+  app.use(
+    logger("tiny", {
+      skip: (req, res) => {},
+    })
+  );
   app.use(graphqlUploadExpress());
   app.use("/static", express.static("uploads"));
   server.applyMiddleware({ app });

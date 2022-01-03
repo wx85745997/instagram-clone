@@ -12,3 +12,14 @@ export type Resolvers = {
     [key: string]: Resolver;
   };
 };
+
+type HashtagObj = {
+  where: {
+    hashtag: any;
+  };
+  create: {
+    hashtag: any;
+  };
+};
+
+export type ProcessHashtags = (caption: string) => HashtagObj[];

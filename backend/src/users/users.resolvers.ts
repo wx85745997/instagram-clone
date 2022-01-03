@@ -2,6 +2,14 @@ import client from "../client";
 
 export default {
   User: {
+    photos: ({ id }) =>
+      client.user
+        .findUnique({
+          where: {
+            id,
+          },
+        })
+        .photos(),
     totalFollowers: async ({ id }) => {
       return (await client.user.findUnique({ where: { id } }).followers())
         .length;

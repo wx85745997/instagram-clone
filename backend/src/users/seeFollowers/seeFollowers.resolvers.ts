@@ -1,4 +1,4 @@
-import { Resolvers } from "../types";
+import { Resolvers } from "../../types";
 const resolvers: Resolvers = {
   Query: {
     seeFollowers: async (_, { username, take = 5, page }, { client }) => {
