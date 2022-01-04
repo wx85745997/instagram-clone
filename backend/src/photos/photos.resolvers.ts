@@ -1,8 +1,11 @@
-import client from "../client";
-import { Resolvers } from "../types";
+import { Resolvers } from "../types"
 
 const resolvers: Resolvers = {
   Photo: {
+    comments: ({ id }, _, { client }) =>
+      client.comment.count({
+        where: { photoId: id },
+      }),
     likes: ({ id }, _, { client, loggedInUser }) =>
       client.like.count({
         where: { photoId: id },
@@ -25,7 +28,7 @@ const resolvers: Resolvers = {
       }),
   },
   Hashtag: {
-    photos: ({ id }, { page, take = 5 }) =>
+    photos: ({ id }, { page, take = 5 }, { client }) =>
       client.hashtag
         .findUnique({
           where: {
@@ -47,6 +50,6 @@ const resolvers: Resolvers = {
         },
       }),
   },
-};
+}
 
-export default resolvers;
+export default resolvers

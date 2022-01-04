@@ -25,7 +25,7 @@ model User {
   followers User[]    @relation("FollowRelation", references: [id])
   following User[]    @relation("FollowRelation", references: [id])
   likes     Like[]
-  Comment   Comment[]
+  comments   Comment[]
 }
 
 model Photo {
@@ -37,8 +37,8 @@ model Photo {
   file      String
   caption   String?
   hashtags  Hashtag[]
-  Like      Like[]
-  Comment   Comment[]
+  likes      Like[]
+  comments   Comment[]
 }
 
 model Hashtag {
